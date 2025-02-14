@@ -1,0 +1,147 @@
+
+.container {
+  min-height: 100vh;
+  background-color: #f0e68c;
+  padding: 1rem;
+}
+
+.header {
+  background-color: white;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.main {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.coinSection {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.coinButton {
+  background-color: #c3f2ff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid #666;
+  cursor: pointer;
+}
+
+.coinButton:hover {
+  background-color: #0066CC;
+  color: white;
+}
+
+.coinButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.medalCount {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.gameSection {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.judgment {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.handDisplay {
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+.startButton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.startButton:hover {
+  background-color: #45a049;
+}
+
+.startButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.handButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.handButton {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c3f2ff;
+  border-radius: 50%;
+  border: 1px solid #666;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.handButton:hover {
+  background-color: #0066CC;
+  color: white;
+}
+
+.handButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.multiplierRow {
+  display: flex;
+  justify-content: space-around;
+}
+
+.multiplier {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffcaca;
+  border: 2px solid #c8412d;
+}
+
+.activeMultiplier {
+  background-color: #f98fab;
+}
