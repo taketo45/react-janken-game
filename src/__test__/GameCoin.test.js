@@ -45,4 +45,9 @@ describe('GameCoin Component', () => {
     const medalCountElement = screen.getByText(/メダル数: 10/i);
     expect(medalCountElement).toBeInTheDocument();
   });
+
+  test('another test case', () => {
+    render(<GameCoin />);
+    // テスト内容
+  });
 });

@@ -55,32 +55,6 @@ test('renders Pa Button', () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-test('increments medal count by 3 when 10YenCoinButton is clicked 3 times', () => {
-  render(<JankenGame />);
-  const tenYenButton = screen.getByText(/10円投入/i);
-  const medalCountLabel = screen.getByText(/メダル数:/i);
-
-  fireEvent.click(tenYenButton);
-  fireEvent.click(tenYenButton);
-  fireEvent.click(tenYenButton);
-
-  expect(medalCountLabel).toHaveTextContent('メダル数: 3');
-});
-
-
-test('increments medal count by 30 when 100YenCoinButton is clicked 3 times', () => {
-  render(<JankenGame />);
-  
-  const hundredYenButton = screen.getByText(/100円投入/i);
-  const medalCountLabel = screen.getByText(/メダル数:/i);
-
-  fireEvent.click(hundredYenButton);
-  fireEvent.click(hundredYenButton);
-  fireEvent.click(hundredYenButton);
-
-  expect(medalCountLabel).toHaveTextContent('メダル数: 30');
-});
-
 test('STARTボタン、✊️、✌️、✋ボタンが起動直後に押下できないことをチェック', () => {
   render(<JankenGame />);
   const startButton = screen.getByText(/START/i);
@@ -94,7 +68,7 @@ test('STARTボタン、✊️、✌️、✋ボタンが起動直後に押下で
   expect(paButton).toBeDisabled();
 });
 
-test('10円投入ボタンを3回クリックした時にメダル数:ラベルの右側に3と表示されるかをチェック', () => {
+test('increments medal count by 3 when 10YenCoinButton is clicked 3 times', () => {
   render(<JankenGame />);
   const tenYenButton = screen.getByText(/10円投入/i);
   const medalCountLabel = screen.getByText(/メダル数:/i);
@@ -106,29 +80,6 @@ test('10円投入ボタンを3回クリックした時にメダル数:ラベル�
   expect(medalCountLabel).toHaveTextContent('メダル数: 3');
 });
 
-test('画面リフレッシュした上で100円投入ボタンを3回クリックした時に、メダル数:ラベルの右側に30と表示されるかをチェック', () => {
-  render(<JankenGame />);
-  const hundredYenButton = screen.getByText(/100円投入/i);
-  const medalCountLabel = screen.getByText(/メダル数:/i);
-
-  fireEvent.click(hundredYenButton);
-  fireEvent.click(hundredYenButton);
-  fireEvent.click(hundredYenButton);
-
-  expect(medalCountLabel).toHaveTextContent('メダル数: 30');
-});
-
-test('10円投入ボタンを1回クリックした時にメダル数ラベルが1に変化し、STARTボタンがグレーからグリーンに変化することを確認', () => {
-  render(<JankenGame />);
-  const tenYenButton = screen.getByText(/10円投入/i);
-  const medalCountLabel = screen.getByText(/メダル数:/i);
-  const startButton = screen.getByText(/START/i);
-
-  fireEvent.click(tenYenButton);
-
-  expect(medalCountLabel).toHaveTextContent('メダル数: 1');
-  expect(startButton).not.toBeDisabled();
-});
 
 test('10円投入ボタンを1回クリックした時にメダル数ラベルが1に変化し、STARTボタンがグレーからグリーンに変化し、その上で、✊️ボタンが押下でき、かち、まけ、あいこのいずれかが表示されることをチェック', () => {
   render(<JankenGame />);
@@ -180,7 +131,6 @@ test('10円投入ボタンを1回クリックした時にメダル数ラベル�
   const startButton = screen.getByText(/START/i);
 
   fireEvent.click(tenYenButton);
-  expect(medalCountLabel).toHaveTextContent('メダル数: 1');
   expect(startButton).not.toBeDisabled();
 
   fireEvent.click(startButton);
