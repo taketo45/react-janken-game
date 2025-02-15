@@ -1,5 +1,3 @@
-// JankenGame.jsx
-import React, { useState } from 'react';
 import mainStyles from './JankenMainStyle.module.css';
 import { useAtom  } from 'jotai';
 import { userStatusAtom } from './userStatusAtom';
@@ -8,6 +6,7 @@ import { pcHandAtom } from './pcHandAtom';
 import { judgementAtom } from './judgementAtom';
 import GameCoin from './GameCoin';
 import JankenRenderPCHand from './JankenRenderPCHand';
+import JankenStartButton from './JankenStartButton';
 
 
 const HANDS = {
@@ -31,29 +30,6 @@ const JankenMain = () => {
   const [judgement, setJudgement] = useAtom(judgementAtom);
 
 
-  const startGame = () => {
-    if (gameStatus.isGaming || userStatus.medal <= 0) {
-      if (userStatus.medal <= 0) alert(MESSAGES.BUY_MEDAL);
-      return;
-    }
-
-    setGameStatus(prev => ({
-      ...prev,
-      isGaming: true,
-      isGuChokiPaAble: true,
-      // medal: prev.medal - 1
-    }));
-    setUserStatus(prev => ({
-      ...prev,
-      medal: prev.medal - 1
-    }));
-    setJudgement({
-      judgement: '',
-    });
-    setPcHand({
-      pcHand: 'waiting',
-    });
-  };
 
   const handleJanken = (hand) => {
     if (!gameStatus.isGuChokiPaAble) return;
@@ -139,19 +115,9 @@ const JankenMain = () => {
     <main className={mainStyles.main}>
       <GameCoin />
 
-      <div>ココに倍率表示？</div>
-
       <JankenRenderPCHand />
 
-      <div className={mainStyles.buttonRow}>
-        <button
-          onClick={startGame}
-          disabled={gameStatus.isGaming || userStatus.medal <= 0}
-          className={mainStyles.startButton}
-        >
-          START
-        </button>
-      </div>
+      <JankenStartButton />
 
       <div className={mainStyles.handButtons}>
         {[HANDS.GU, HANDS.CHOKI, HANDS.PA].map((hand) => (
