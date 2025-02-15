@@ -4,7 +4,10 @@ import mainStyles from './JankenMainStyle.module.css';
 import { useAtom  } from 'jotai';
 import { userStatusAtom } from './userStatusAtom';
 import { JankenStatusAtom } from './JankenStatusAtom';
+import { pcHandAtom } from './pcHandAtom';
+import { judgementAtom } from './judgementAtom';
 import GameCoin from './GameCoin';
+import JankenRenderPCHand from './JankenRenderPCHand';
 
 
 const HANDS = {
@@ -24,9 +27,9 @@ const JankenMain = () => {
   const [userStatus, setUserStatus] = useAtom(userStatusAtom);
 
   const [gameStatus, setGameStatus] = useAtom(JankenStatusAtom);
-  
-  const [judgment, setJudgment] = useState('');
-  const [pcHand, setPcHand] = useState(null);
+  const [pcHand, setPcHand] = useAtom(pcHandAtom);
+  const [judgement, setJudgement] = useAtom(judgementAtom);
+
 
   const startGame = () => {
     if (gameStatus.isGaming || userStatus.medal <= 0) {
@@ -44,15 +47,21 @@ const JankenMain = () => {
       ...prev,
       medal: prev.medal - 1
     }));
-    setJudgment('');
-    setPcHand('waiting');
+    setJudgement({
+      judgement: '',
+    });
+    setPcHand({
+      pcHand: 'waiting',
+    });
   };
 
   const handleJanken = (hand) => {
     if (!gameStatus.isGuChokiPaAble) return;
 
     const pcHandValue = Math.ceil(Math.random() * 3);
-    setPcHand(pcHandValue);
+    setPcHand({
+      pcHand: pcHandValue,
+    });
 
     const result = getGameResult(hand, pcHandValue);
     handleGameResult(result);
@@ -71,11 +80,15 @@ const JankenMain = () => {
   };
 
   const handleGameResult = (result) => {
-    setJudgment(MESSAGES[result]);
+    setJudgement({
+      judgement: MESSAGES[result],
+    });
     
     if (result === 'EVEN') {
       setTimeout(() => {
-        setPcHand('waiting');
+        setPcHand({
+          pcHand: 'waiting',
+        });
         setGameStatus(prev => ({
           ...prev,
           isGuChokiPaAble: true
@@ -112,17 +125,6 @@ const JankenMain = () => {
     return medals[winCount - 1] || 0;
   };
 
-  const renderHand = (hand) => {
-    if (hand === 'waiting') {
-      return <img src="./img/guchopa.gif" alt="じゃん...けん..." />;
-    }
-    const hands = {
-      [HANDS.GU]: <img src="./img/gu.png" alt="ぐー" />,
-      [HANDS.CHOKI]: <img src="./img/choki.png" alt="ちょき" />,
-      [HANDS.PA]: <img src="./img/pa.png" alt="ぱー" />
-    };
-    return hands[hand] || '';
-  };
 
   const renderButtonHand = (hand) => {
     const hands = {
@@ -139,12 +141,7 @@ const JankenMain = () => {
 
       <div>ココに倍率表示？</div>
 
-      <div className={mainStyles.gameSection}>
-        <div className={mainStyles.judgment}>{judgment}</div>
-        <div className={mainStyles.handDisplay}>
-          {renderHand(pcHand)}
-        </div>
-      </div>
+      <JankenRenderPCHand />
 
       <div className={mainStyles.buttonRow}>
         <button
