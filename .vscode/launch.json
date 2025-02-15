@@ -10,6 +10,28 @@
       "sourceMapPathOverrides": {
           "webpack:///src/*": "${webRoot}/*"
       }
+    },
+    {
+      "type": "node",
+      "name": "vscode-jest-tests.v2.react-janken-game",
+      "request": "launch",
+      "args": [
+        "test",
+        "--",
+        "test",
+        "--runInBand",
+        "--watchAll=false",
+        "--testNamePattern",
+        "${jest.testNamePattern}",
+        "--runTestsByPath",
+        "${jest.testFile}"
+      ],
+      "cwd": "/Users/taketoshi/Develop/React/react-janken-game",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "runtimeExecutable": "npm",
+      "protocol": "inspector"
     }
   ]
 }

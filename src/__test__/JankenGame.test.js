@@ -3,22 +3,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import JankenGame from '../components/JankenGame';
 
+
+
 describe("Test for Janken Components🤗", () => {
-
-const MAX_RETRY = 10;
-
-const retryTest = async (testFn, expectedText, maxRetries = MAX_RETRY) => {
-  for (let i = 0; i < maxRetries; i++) {
-    try {
-      await testFn();
-      const judgment = screen.getByText(expectedText);
-      if (judgment) return;
-    } catch (error) {
-      if (i === maxRetries - 1) throw error;
-    }
-  }
-};
-
 
 test('renders Tittle', () => {
   render(<JankenGame />);
@@ -80,8 +67,10 @@ test('increments medal count by 3 when 10YenCoinButton is clicked 3 times', () =
   expect(medalCountLabel).toHaveTextContent('メダル数: 3');
 });
 
+
 test('increments medal count by 30 when 100YenCoinButton is clicked 3 times', () => {
   render(<JankenGame />);
+  
   const hundredYenButton = screen.getByText(/100円投入/i);
   const medalCountLabel = screen.getByText(/メダル数:/i);
 

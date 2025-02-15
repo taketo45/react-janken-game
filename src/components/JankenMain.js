@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import mainStyles from './JankenMainStyle.module.css';
 import { useAtom  } from 'jotai';
 import { userStatusAtom } from './userStatusAtom';
+import { JankenStatusAtom } from './JankenStatusAtom';
+import GameCoin from './GameCoin';
 
 
 const HANDS = {
@@ -21,28 +23,10 @@ const MESSAGES = {
 const JankenMain = () => {
   const [userStatus, setUserStatus] = useAtom(userStatusAtom);
 
-  const [gameStatus, setGameStatus] = useState({
-    winCount: 0,
-    // medal: 0,
-    isGuChokiPaAble: false,
-    isStartAble: true,
-    isGaming: false,
-  });
+  const [gameStatus, setGameStatus] = useAtom(JankenStatusAtom);
   
   const [judgment, setJudgment] = useState('');
   const [pcHand, setPcHand] = useState(null);
-  
-  const insertCoins = (amount) => {
-    if (gameStatus.isGaming) return;
-    // setGameStatus(prev => ({
-    //   ...prev,
-    //   medal: prev.medal + amount
-    // }));
-    setUserStatus(prev => ({
-      ...prev,
-      medal: prev.medal + amount
-    }));
-  };
 
   const startGame = () => {
     if (gameStatus.isGaming || userStatus.medal <= 0) {
@@ -130,8 +114,17 @@ const JankenMain = () => {
 
   const renderHand = (hand) => {
     if (hand === 'waiting') {
-      return "✊✌️✋";
+      return <img src="./img/guchopa.gif" alt="じゃん...けん..." />;
     }
+    const hands = {
+      [HANDS.GU]: <img src="./img/gu.png" alt="ぐー" />,
+      [HANDS.CHOKI]: <img src="./img/choki.png" alt="ちょき" />,
+      [HANDS.PA]: <img src="./img/pa.png" alt="ぱー" />
+    };
+    return hands[hand] || '';
+  };
+
+  const renderButtonHand = (hand) => {
     const hands = {
       [HANDS.GU]: '✊',
       [HANDS.CHOKI]: '✌️',
@@ -142,27 +135,7 @@ const JankenMain = () => {
 
   return (
     <main className={mainStyles.main}>
-      <div className={mainStyles.coinSection}>
-        <div className={mainStyles.buttonRow}>
-          <button 
-            onClick={() => insertCoins(1)} 
-            className={mainStyles.coinButton}
-            disabled={gameStatus.isGaming}
-          >
-            10円投入
-          </button>
-          <button 
-            onClick={() => insertCoins(10)}
-            className={mainStyles.coinButton}
-            disabled={gameStatus.isGaming}
-          >
-            100円投入
-          </button>
-        </div>
-        <div className={mainStyles.medalCount}>
-          メダル数: {userStatus.medal}
-        </div>
-      </div>
+      <GameCoin />
 
       <div>ココに倍率表示？</div>
 
@@ -191,7 +164,7 @@ const JankenMain = () => {
             disabled={!gameStatus.isGuChokiPaAble}
             className={mainStyles.handButton}
           >
-            {renderHand(hand)}
+            {renderButtonHand(hand)}
           </button>
         ))}
       </div>
