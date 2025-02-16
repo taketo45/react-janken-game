@@ -4,6 +4,7 @@ import JankenRenderPCHand from './JankenRenderPCHand';
 import JankenStartButton from './JankenStartButton';
 import JankenHandsButtons from './JankenHandsButtons';
 import JankenMedalRate from './JankenMedalRate';
+import JankenJudgement from './JankenJudgement';
 
 
 const JankenMain = () => {
@@ -12,6 +13,8 @@ const JankenMain = () => {
   return (
     <main className={mainStyles.main}>
       <GameCoin />
+
+      <JankenJudgement />
 
       <JankenRenderPCHand />
 

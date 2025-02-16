@@ -36,9 +36,6 @@ const GameCoin = () => {
           100円投入
         </button>
       </div>
-      <div className={coinStyles.medalCount}>
-        メダル数: {userStatus.medal}
-      </div>
     </div>
   );
 };

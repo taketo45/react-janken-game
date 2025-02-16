@@ -1,6 +1,5 @@
 import pcHandStyles from './JankenRenderPCHandStyle.module.css';
 import { pcHandAtom } from '../atoms/pcHandAtom';
-import { judgementAtom } from '../atoms/judgementAtom';
 import { useAtom } from 'jotai';
 
 
@@ -11,10 +10,8 @@ const HANDS = {
 };
 
 
-const JankenRenderPCHand = () => {
+const JankenJudgement = () => {
   const [pcHandState] = useAtom(pcHandAtom);
-  const [judgementState] = useAtom(judgementAtom);
-
 
   const renderHand = (hand) => {
     if (hand === 'waiting') {
@@ -28,10 +25,8 @@ const JankenRenderPCHand = () => {
     return hands[hand] || '';
   };
 
-
   return (
       <div className={pcHandStyles.gameSection}>
-        <div className={pcHandStyles.judgment}>{judgementState.judgement}</div>
         <div className={pcHandStyles.handDisplay}>
           {renderHand(pcHandState.pcHand)}
         </div>
@@ -40,4 +35,4 @@ const JankenRenderPCHand = () => {
   );
 };
 
-export default JankenRenderPCHand;
+export default JankenJudgement;

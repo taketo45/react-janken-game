@@ -1,11 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import JankenGame from './components/JankenGame';
+import normalize from 'normalize.css';
 
 function App() {
   return (
-    <div className="App">
-      <JankenGame />
+    <div styles={normalize}>
+      <div className="App">
+        <JankenGame />
+      </div>
     </div>
   );
 }

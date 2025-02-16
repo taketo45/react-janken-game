@@ -12,7 +12,7 @@ function GameHeader({title}) {
     <>
       <header className={headerStyles.header}>
         <h1 className={gameSstyles.title}>{title}</h1>
-        <p className={gameSstyles.status}>勝ち数: {userStatus.totalWinCount} メダル数： {userStatus.medal}</p>
+        <div className={gameSstyles.status}><p>勝ち数: {userStatus.totalWinCount}</p> <p>メダル数： {userStatus.medal}</p></div>
       </header>
     </>
   );
