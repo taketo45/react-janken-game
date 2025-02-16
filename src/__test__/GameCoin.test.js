@@ -2,8 +2,8 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Provider } from 'jotai';
-import { userStatusAtom } from '../components/userStatusAtom';
-import { JankenStatusAtom } from '../components/JankenStatusAtom';
+import { userStatusAtom } from '../atoms/userStatusAtom';
+import { JankenStatusAtom } from '../atoms/JankenStatusAtom';
 import GameCoin from '../components/GameCoin';
 
 const initialUserStatus = {

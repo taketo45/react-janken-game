@@ -1,4 +1,4 @@
-import { userStatusAtom } from '../components/userStatusAtom';
+import { userStatusAtom } from '../atoms/userStatusAtom';
 import { getDefaultStore } from 'jotai';
 
 describe('userStatusAtom', () => {

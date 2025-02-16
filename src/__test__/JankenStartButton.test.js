@@ -2,10 +2,10 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Provider } from 'jotai';
-import { userStatusAtom } from '../components/userStatusAtom';
-import { JankenStatusAtom } from '../components/JankenStatusAtom';
-import { pcHandAtom } from '../components/pcHandAtom';
-import { judgementAtom } from '../components/judgementAtom';
+import { userStatusAtom } from '../atoms/userStatusAtom';
+import { JankenStatusAtom } from '../atoms/JankenStatusAtom';
+import { pcHandAtom } from '../atoms/pcHandAtom';
+import { judgementAtom } from '../atoms/judgementAtom';
 import JankenStartButton from '../components/JankenStartButton';
 
 const initialUserStatus = {

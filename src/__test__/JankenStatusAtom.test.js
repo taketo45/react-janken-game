@@ -1,4 +1,4 @@
-import { JankenStatusAtom } from '../components/JankenStatusAtom';
+import { JankenStatusAtom } from '../atoms/JankenStatusAtom';
 import { getDefaultStore } from 'jotai';
 
 describe('JankenStatusAtom', () => {

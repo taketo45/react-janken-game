@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Provider,useAtom } from 'jotai';
-import { userStatusAtom } from '../components/userStatusAtom';
+import { userStatusAtom } from '../atoms/userStatusAtom';
 import GameHeader from '../components/GameHeader';
 
 const initialState = {
