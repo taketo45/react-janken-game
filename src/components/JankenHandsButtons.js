@@ -1,9 +1,9 @@
-import mainStyles from './JankenMainStyle.module.css';
+import handButtonsStyles from './JankenHandsButtonsStyle.module.css';
 import { useAtom  } from 'jotai';
-import { userStatusAtom } from './userStatusAtom';
-import { JankenStatusAtom } from './JankenStatusAtom';
-import { pcHandAtom } from './pcHandAtom';
-import { judgementAtom } from './judgementAtom';
+import { userStatusAtom } from '../atoms/userStatusAtom';
+import { JankenStatusAtom } from '../atoms/JankenStatusAtom';
+import { pcHandAtom } from '../atoms/pcHandAtom';
+import { judgementAtom } from '../atoms/judgementAtom';
 
 
 const HANDS = {
@@ -109,13 +109,13 @@ const JankenHandsButtons = () => {
   };
 
   return (
-      <div className={mainStyles.handButtons}>
+      <div className={handButtonsStyles.handButtons}>
         {[HANDS.GU, HANDS.CHOKI, HANDS.PA].map((hand) => (
           <button
             key={hand}
             onClick={() => handleJanken(hand)}
             disabled={!gameStatus.isGuChokiPaAble}
-            className={mainStyles.handButton}
+            className={handButtonsStyles.handButton}
           >
             {renderButtonHand(hand)}
           </button>

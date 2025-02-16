@@ -1,6 +1,6 @@
-import mainStyles from './JankenMainStyle.module.css';
-import { pcHandAtom } from './pcHandAtom';
-import { judgementAtom } from './judgementAtom';
+import pcHandStyles from './JankenRenderPCHandStyle.module.css';
+import { pcHandAtom } from '../atoms/pcHandAtom';
+import { judgementAtom } from '../atoms/judgementAtom';
 import { useAtom } from 'jotai';
 
 
@@ -30,9 +30,9 @@ const JankenRenderPCHand = () => {
 
 
   return (
-      <div className={mainStyles.gameSection}>
-        <div className={mainStyles.judgment}>{judgementState.judgement}</div>
-        <div className={mainStyles.handDisplay}>
+      <div className={pcHandStyles.gameSection}>
+        <div className={pcHandStyles.judgment}>{judgementState.judgement}</div>
+        <div className={pcHandStyles.handDisplay}>
           {renderHand(pcHandState.pcHand)}
         </div>
       </div>

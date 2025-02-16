@@ -1,16 +1,12 @@
-import mainStyles from './JankenMainStyle.module.css';
+import JankenGamestyles from './JankenGame.module.css';
+import StartButtonStyles from './JankenStartButtonStyle.module.css';
 import { useAtom  } from 'jotai';
-import { userStatusAtom } from './userStatusAtom';
-import { JankenStatusAtom } from './JankenStatusAtom';
-import { pcHandAtom } from './pcHandAtom';
-import { judgementAtom } from './judgementAtom';
+import { userStatusAtom } from '../atoms/userStatusAtom';
+import { JankenStatusAtom } from '../atoms/JankenStatusAtom';
+import { pcHandAtom } from '../atoms/pcHandAtom';
+import { judgementAtom } from '../atoms/judgementAtom';
 
 
-const HANDS = {
-  GU: 1,
-  CHOKI: 2,
-  PA: 3,
-};
 
 const MESSAGES = {
   EVEN: 'あいこ',
@@ -23,6 +19,8 @@ const JankenStartButton = () => {
   const [userStatus, setUserStatus] = useAtom(userStatusAtom);
 
   const [gameStatus, setGameStatus] = useAtom(JankenStatusAtom);
+
+  // Atomの第一引数は削除してはいけない
   const [pcHand, setPcHand] = useAtom(pcHandAtom);
   const [judgement, setJudgement] = useAtom(judgementAtom);
 
@@ -52,20 +50,12 @@ const JankenStartButton = () => {
   };
 
 
-
-
-
-
-
-
-
-
   return (
-    <div className={mainStyles.buttonRow}>
+    <div className={JankenGamestyles.buttonRow}>
       <button
         onClick={startGame}
         disabled={gameStatus.isGaming || userStatus.medal <= 0}
-        className={mainStyles.startButton}
+        className={StartButtonStyles.startButton}
       >
         START
       </button>

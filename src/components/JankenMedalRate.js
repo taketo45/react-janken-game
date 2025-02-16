@@ -1,6 +1,6 @@
-import mainStyles from './JankenMainStyle.module.css';
+import medalRateStyles from './JankenMedalRateStyle.module.css';
 import { useAtom  } from 'jotai';
-import { JankenStatusAtom } from './JankenStatusAtom';
+import { JankenStatusAtom } from '../atoms/JankenStatusAtom';
 
 
 const JankenMedalRate = () => {
@@ -9,12 +9,12 @@ const JankenMedalRate = () => {
 
 
   return (
-    <div className={mainStyles.multiplierRow}>
+    <div className={medalRateStyles.multiplierRow}>
       {[2, 4, 8, 16, 32].map((multiplier, index) => (
         <div
           key={multiplier}
-          className={`${mainStyles.multiplier} ${
-            index + 1 === gameStatus.winCount ? mainStyles.activeMultiplier : ''
+          className={`${medalRateStyles.multiplier} ${
+            index + 1 === gameStatus.winCount ? medalRateStyles.activeMultiplier : ''
           }`}
         >
           {multiplier}

@@ -1,8 +1,8 @@
-
-import mainStyles from './JankenMainStyle.module.css';
+import JankenGamestyles from './JankenGame.module.css';
+import coinStyles  from './GameCoinStyle.module.css';
 import { useAtom  } from 'jotai';
-import { userStatusAtom } from './userStatusAtom';
-import { JankenStatusAtom } from './JankenStatusAtom';
+import { userStatusAtom } from '../atoms/userStatusAtom';
+import { JankenStatusAtom } from '../atoms/JankenStatusAtom';
 
 
 const GameCoin = () => {
@@ -19,24 +19,24 @@ const GameCoin = () => {
 
 
   return (
-    <div className={mainStyles.coinSection}>
-      <div className={mainStyles.buttonRow}>
+    <div className={coinStyles.coinSection}>
+      <div className={JankenGamestyles.buttonRow}>
         <button 
           onClick={() => insertCoins(1)} 
-          className={mainStyles.coinButton}
+          className={coinStyles.coinButton}
           disabled={gameStatus.isGaming}
         >
           10円投入
         </button>
         <button 
           onClick={() => insertCoins(10)}
-          className={mainStyles.coinButton}
+          className={coinStyles.coinButton}
           disabled={gameStatus.isGaming}
         >
           100円投入
         </button>
       </div>
-      <div className={mainStyles.medalCount}>
+      <div className={coinStyles.medalCount}>
         メダル数: {userStatus.medal}
       </div>
     </div>
